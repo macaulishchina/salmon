@@ -1,5 +1,8 @@
 package com.macaulish.top.coconut
 
+import com.macaulish.top.coconut.util.FileUtils
+import org.junit.Test
+import java.io.File
 
 /**
  * created by hu
@@ -8,5 +11,10 @@ package com.macaulish.top.coconut
  */
 class TestClass {
 
+    @Test
+    fun testFunction() {
+        val file = File("E:\\2018毕业设3计.rar")
+        println(FileUtils.getReadableSize(file))
+    }
 
 }
