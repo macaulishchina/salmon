@@ -1,8 +1,7 @@
 package com.macaulish.top.salmon
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import com.macaulish.top.coconut.util.FileUtils
+import android.support.v7.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 

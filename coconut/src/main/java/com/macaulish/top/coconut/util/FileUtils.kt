@@ -1,7 +1,5 @@
 package com.macaulish.top.coconut.util
 
-import org.apache.commons.io.FileUtils
-import org.junit.Test
 import java.io.File
 import java.math.RoundingMode
 import java.text.DecimalFormat

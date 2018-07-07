@@ -17,4 +17,17 @@ class TestClass {
         println(FileUtils.getReadableSize(file))
     }
 
+    @Test
+    fun testNull() {
+        var dog: Dog? = null
+        dog ?: dog
+
+    }
+
+    class Dog {
+        fun eat() {
+            print("eat")
+        }
+    }
+
 }
