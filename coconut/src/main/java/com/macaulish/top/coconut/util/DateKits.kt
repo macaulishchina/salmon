@@ -9,7 +9,7 @@ import java.util.*
  * in project salmon
  * description
  */
-object DateUtils {
+object DateKits {
 
     /**
      * 按指定的时间格式[format]显示当前日期和时间

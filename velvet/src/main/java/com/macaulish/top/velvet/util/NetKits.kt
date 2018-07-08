@@ -12,7 +12,7 @@ import android.net.NetworkInfo
  * in project salmon
  * description 安卓网络相关的方法
  */
-object NetUtils {
+object NetKits {
 
     /**
      * 查询是否存在连接

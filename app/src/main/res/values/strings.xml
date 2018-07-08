@@ -4,4 +4,6 @@
     <string name="activity_network_state_test_clear">清屏</string>
     <string name="activity_main_net_state_check">网络状态检测</string>
     <string name="hello_world">hello world</string>
+    <string name="take_photo">拍照</string>
+    <string name="activity_main_take_photo_test">拍照功能测试</string>
 </resources>

@@ -1,6 +1,6 @@
 package com.macaulish.top.coconut
 
-import com.macaulish.top.coconut.util.FileUtils
+import com.macaulish.top.coconut.util.FileKits
 import org.junit.Test
 import java.io.File
 
@@ -14,20 +14,13 @@ class TestClass {
     @Test
     fun testFunction() {
         val file = File("E:\\2018毕业设3计.rar")
-        println(FileUtils.getReadableSize(file))
+        println(FileKits.getReadableSize(file))
     }
 
     @Test
-    fun testNull() {
-        var dog: Dog? = null
-        dog ?: dog
-
-    }
-
-    class Dog {
-        fun eat() {
-            print("eat")
-        }
+    fun testFileKits() {
+        val file = FileKits.getOrCreate("/as/ab/ab/../11")
+        println(file.canonicalPath)
     }
 
 }

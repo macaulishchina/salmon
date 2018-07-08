@@ -11,7 +11,7 @@ import java.text.DecimalFormat
  * in project salmon
  * description 文件处理工具
  */
-object FileUtils {
+object FileKits {
 
     /**
      * 获得文件[file]的大小，单位为字节
@@ -63,17 +63,17 @@ object FileUtils {
      * 获得[filePath]指定的文件，如果该路径的文件不存在则尝试新建一个该路径下的文件
      * 支持相对路径 "./"、"../"的写法，不以根目录或盘符开头则默认以 "./'开头，例如 "music/demo.mp3" = "./music/demo.mp3"
      * 在windows文件系统中使用 "/"开头将指向运行环境的磁盘根目录下
-     * 在创建文件时可能抛出异常 [FileSystemException]
+     * 在创建文件时可能抛出异常 [NullPointerException]
      */
-    fun getOrCreate(filePath: String): File? {
+    fun getOrCreate(filePath: String): File {
         val file = File(File(filePath).canonicalPath)
-        val dir = file.parent ?: return null
-        File(dir).mkdirs()
-        file.createNewFile()
-        //TODO test
+        if (!file.exists()) {
+            val dir = file.parentFile
+            if (!dir.exists() && !dir.mkdirs()) throw NullPointerException("File cannot be created.")
+            file.createNewFile()
+        }
         return file
     }
-
 
     /**
      *
