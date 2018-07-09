@@ -7,6 +7,7 @@ import android.os.Environment
 import android.support.v7.app.AppCompatActivity
 import com.macaulish.top.velvet.util.Logger
 import com.macaulish.top.velvet.util.StorageKits
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -24,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         }
         main_btn_normal_test.setOnClickListener {
             testLogger()
+
         }
     }
 
