@@ -26,7 +26,6 @@ class TestClass {
 
     @Test
     fun testSubstring() {
-        val str = "0123456789"
         println("\\0")
     }
 
