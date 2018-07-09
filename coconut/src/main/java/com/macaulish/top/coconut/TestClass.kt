@@ -1,6 +1,7 @@
 package com.macaulish.top.coconut
 
 import com.macaulish.top.coconut.util.FileKits
+import jdk.nashorn.internal.runtime.options.LoggingOption
 import org.junit.Test
 import java.io.File
 
@@ -22,5 +23,13 @@ class TestClass {
         val file = FileKits.getOrCreate("/as/ab/ab/../11")
         println(file.canonicalPath)
     }
+
+    @Test
+    fun testSubstring() {
+        val str = "0123456789"
+        println("\\0")
+    }
+
+
 
 }

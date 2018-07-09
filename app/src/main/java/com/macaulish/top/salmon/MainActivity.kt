@@ -21,10 +21,41 @@ class MainActivity : AppCompatActivity() {
         main_btn_camera_open.setOnClickListener {
             val intent = Intent(this, CameraActivity::class.java)
             startActivity(intent)
-            testStorageKits()
+        }
+        main_btn_normal_test.setOnClickListener {
+            testLogger()
         }
     }
 
+
+    private fun testLogger() {
+        var testStr = ""
+        for (i in 0 until 10) {
+            for (j in 0 until 1024) {
+                testStr += "" + i
+            }
+        }
+        Logger.v("log 长度 = " + testStr.length)
+        Logger.d("log 长度 = " + testStr.length)
+        Logger.i("log 长度 = " + testStr.length)
+        Logger.w("log 长度 = " + testStr.length)
+        Logger.e("log 长度 = " + testStr.length)
+        Logger.v("hyd", "log 长度 = " + testStr.length)
+        Logger.d("hyd", "log 长度 = " + testStr.length)
+        Logger.i("hyd", "log 长度 = " + testStr.length)
+        Logger.w("hyd", "log 长度 = " + testStr.length)
+        Logger.e("hyd", "log 长度 = " + testStr.length)
+        Logger.v(testStr)
+        Logger.d(testStr)
+        Logger.i(testStr)
+        Logger.w(testStr)
+        Logger.e(testStr)
+        Logger.v("hyd", testStr)
+        Logger.d("hyd", testStr)
+        Logger.i("hyd", testStr)
+        Logger.w("hyd", testStr)
+        Logger.e("hyd", testStr)
+    }
 
     private fun testStorageKits() {
         val internalCache = StorageKits.getInternalCacheDir(this)
