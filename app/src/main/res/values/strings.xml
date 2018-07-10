@@ -7,4 +7,9 @@
     <string name="take_photo">拍照</string>
     <string name="activity_main_take_photo_test">拍照功能测试</string>
     <string name="activity_main_normal_test">通用测试</string>
+    <string name="title_activity_dialog_acitiviy">DialogTest</string>
+    <string name="alert">Alert</string>
+    <string name="confirm">confirm</string>
+    <string name="prompt">prompt</string>
+    <string name="dialog_test">对话框测试</string>
 </resources>

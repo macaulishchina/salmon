@@ -12,10 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <provider
-            android:authorities="${applicationId}.Provider"
             android:name=".Provider"
+            android:authorities="${applicationId}.Provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
@@ -26,12 +25,12 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".NetWorkTestActivity" />
         <activity android:name=".CameraActivity" />
+        <activity android:name=".DialogActivity" />
     </application>
 
 </manifest>

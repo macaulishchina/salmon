@@ -21,7 +21,6 @@ class NetWorkTestActivity : AppCompatActivity() {
         setEventListener()
     }
 
-    @SuppressLint("c")
     private fun setEventListener() {
         network_state_btn_test.setOnClickListener {
             val isConnected = NetKits.isConnected(this)

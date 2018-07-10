@@ -5,9 +5,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Environment
 import android.support.v7.app.AppCompatActivity
+import com.macaulish.top.coconut.util.DateKits
 import com.macaulish.top.velvet.util.Logger
 import com.macaulish.top.velvet.util.StorageKits
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -23,12 +23,20 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, CameraActivity::class.java)
             startActivity(intent)
         }
+        main_btn_dialog_test.setOnClickListener {
+            val intent = Intent(this, DialogActivity::class.java)
+            startActivity(intent)
+        }
         main_btn_normal_test.setOnClickListener {
-            testLogger()
-
+            testDateKits()
         }
     }
 
+
+    private fun testDateKits() {
+        Logger.i("DateKits.getNow()" + DateKits.getNow())
+        Logger.i("DateKits.getNowLocal()" + DateKits.getNowLocal())
+    }
 
     private fun testLogger() {
         var testStr = ""
