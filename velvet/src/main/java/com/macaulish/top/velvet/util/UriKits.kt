@@ -12,7 +12,7 @@ import com.macaulish.top.coconut.util.FileKits
  * in project salmon
  * description
  */
-class UriKits(private val context: Context, private val authority: String) {
+class UriKits(val context: Context, val authority: String) {
 
     /**
      * 获得文件资源的URI

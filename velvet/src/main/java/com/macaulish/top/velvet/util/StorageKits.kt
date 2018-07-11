@@ -13,7 +13,7 @@ import java.io.File
  * in project salmon
  * description 安卓存储管理工具
  */
-object StorageKits {
+class StorageKits(val context: Context){
 
     /**
      * Checks if external storage is available for read and write
@@ -35,28 +35,28 @@ object StorageKits {
      * 在应用的内部存储中创建文件[file]，并设定文件访问权限[mode]
      * 建议直接使用 openFileInput() openFileOutput()对内存文件进行读写操作
      */
-    fun getInternalFile(context: Context, file: String, mode: Int): File {
+    fun getInternalFile(file: String, mode: Int): File {
         return context.getDir(file, mode)
     }
 
     /**
      * 获得内部缓存的根目录
      */
-    fun getInternalCacheDir(context: Context): File {
+    fun getInternalCacheDir(): File {
         return context.cacheDir
     }
 
     /**
      * 获得外部私有存储的根目录
      */
-    fun getExternalPersonalRoot(context: Context): File {
+    fun getExternalPersonalRoot(): File {
         return context.getExternalFilesDir(null)
     }
 
     /**
      * 获得外部私有缓存的根目录
      */
-    fun getExternalPersonalCacheRoot(context: Context): File {
+    fun getExternalPersonalCacheRoot(): File {
         return context.externalCacheDir
     }
 
@@ -72,7 +72,7 @@ object StorageKits {
      * [android.os.Environment.DIRECTORY_PODCASTS]
      * [android.os.Environment.DIRECTORY_RINGTONES]
      */
-    fun getExternalPersonalDir(context: Context, type: String?): File {
+    fun getExternalPersonalDir(type: String?): File {
         return context.getExternalFilesDir(type)
     }
 

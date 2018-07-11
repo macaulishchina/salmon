@@ -12,12 +12,12 @@ import android.net.NetworkInfo
  * in project salmon
  * description 安卓网络相关的方法
  */
-object NetKits {
+class NetKits(val context:Context){
 
     /**
      * 查询是否存在连接
      */
-    fun isConnected(context: Context): Boolean {
+    fun isConnected(): Boolean {
         val info = (context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo
         return info != null && info.isConnected
     }
@@ -25,7 +25,7 @@ object NetKits {
     /**
      * 查询是否通过WIFI连接网络
      */
-    fun isConnectedWifi(context: Context): Boolean {
+    fun isConnectedWifi(): Boolean {
         val info = getNetworkInfo(context)
         return info != null && info.isConnected && info.type == ConnectivityManager.TYPE_WIFI
     }
@@ -33,7 +33,7 @@ object NetKits {
     /**
      * 查询是否通过移动信号基站连接网络
      */
-    fun isConnectedMobile(context: Context): Boolean {
+    fun isConnectedMobile(): Boolean {
         val info = getNetworkInfo(context)
         return info != null && info.isConnected && info.type == ConnectivityManager.TYPE_MOBILE
     }
@@ -41,7 +41,7 @@ object NetKits {
     /**
      * 查询连接的速度
      */
-    fun isConnectedFast(context: Context): Boolean {
+    fun isConnectedFast(): Boolean {
         val info = getNetworkInfo(context)
         return info != null && info.isConnected && isConnectionFast(info.type, info.subtype)
     }
@@ -49,8 +49,8 @@ object NetKits {
     /**
      * 查询连接的类型区分为 2G、3G、4G、WIFI和其它为止连接方式
      */
-    fun getConnectType(context: Context): Int {
-        if (isConnectedWifi(context)) return NETWORK_STATE_WIFI
+    fun getConnectType(): Int {
+        if (isConnectedWifi()) return NETWORK_STATE_WIFI
         val telephonyManager = context.getSystemService(Context.TELEPHONY_SERVICE) as TelephonyManager
         val networkType = telephonyManager.networkType
         return when (networkType) {
@@ -118,7 +118,7 @@ object NetKits {
      * 网络连接是否存在以及网络的类型可以通过比对返回的整型量和常量表[NETWORK_STATE_*]来判断
      */
     @Deprecated(message = "建议使用[getConnectType(context)]方法")
-    fun checkNetworkConnection(context: Context): Int {
+    fun checkNetworkConnection(): Int {
 
         val connMgr = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val activeInfo = connMgr.activeNetworkInfo ?: return NETWORK_STATE_OFF
@@ -144,26 +144,29 @@ object NetKits {
         return (context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager).activeNetworkInfo
     }
 
-    const val NETWORK_STATE_UNKNOWN = -1     //未知的网络连接方式
-    @Deprecated(message = "[checkNetworkConnection(context)]方法使用")
-    const val NETWORK_STATE_OFF = 0         //没有网络连接
-    @Deprecated(message = "[checkNetworkConnection(context)]方法使用")
-    const val NETWORK_STATE_MOBILE = 1      //移动数据连接
-    @Deprecated(message = "[checkNetworkConnection(context)]方法使用")
-    const val NETWORK_STATE_BLUETOOTH = 3   //蓝牙连接
-    @Deprecated(message = "[checkNetworkConnection(context)]方法使用")
-    const val NETWORK_STATE_VPN = 4         //虚拟局域网连接
-    @Deprecated(message = "[checkNetworkConnection(context)]方法使用")
-    const val NETWORK_STATE_ETHERNET = 5    //以太网连接
-    @Deprecated(message = "[checkNetworkConnection(context)]方法使用")
-    const val NETWORK_STATE_DUMMY = 6       //虚拟连接
-    @Deprecated(message = "[checkNetworkConnection(context)]方法使用")
-    const val NETWORK_STATE_WIMAX = 7       //全球互通微波存取数据连接
-    @Deprecated(message = "[checkNetworkConnection(context)]方法使用")
-    const val NETWORK_STATE_MOBILE_DUN = 8  //桥接网络连接
+    companion object {
+        const val NETWORK_STATE_UNKNOWN = -1     //未知的网络连接方式
+        @Deprecated(message = "[checkNetworkConnection(context)]方法使用")
+        const val NETWORK_STATE_OFF = 0         //没有网络连接
+        @Deprecated(message = "[checkNetworkConnection(context)]方法使用")
+        const val NETWORK_STATE_MOBILE = 1      //移动数据连接
+        @Deprecated(message = "[checkNetworkConnection(context)]方法使用")
+        const val NETWORK_STATE_BLUETOOTH = 3   //蓝牙连接
+        @Deprecated(message = "[checkNetworkConnection(context)]方法使用")
+        const val NETWORK_STATE_VPN = 4         //虚拟局域网连接
+        @Deprecated(message = "[checkNetworkConnection(context)]方法使用")
+        const val NETWORK_STATE_ETHERNET = 5    //以太网连接
+        @Deprecated(message = "[checkNetworkConnection(context)]方法使用")
+        const val NETWORK_STATE_DUMMY = 6       //虚拟连接
+        @Deprecated(message = "[checkNetworkConnection(context)]方法使用")
+        const val NETWORK_STATE_WIMAX = 7       //全球互通微波存取数据连接
+        @Deprecated(message = "[checkNetworkConnection(context)]方法使用")
+        const val NETWORK_STATE_MOBILE_DUN = 8  //桥接网络连接
 
-    const val NETWORK_STATE_WIFI = 2        //WIFI连接
-    const val NETWORK_STATE_2G = 12          //2G移动网络
-    const val NETWORK_STATE_3G = 13          //3G移动网络
-    const val NETWORK_STATE_4G = 14          //4G移动网络
+        const val NETWORK_STATE_WIFI = 2        //WIFI连接
+        const val NETWORK_STATE_2G = 12          //2G移动网络
+        const val NETWORK_STATE_3G = 13          //3G移动网络
+        const val NETWORK_STATE_4G = 14          //4G移动网络
+    }
+
 }
